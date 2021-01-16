@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="gnome-shell-extension-examples">
+    <schema id="org.gnome.shell.extensions.gnome4synology" path="/org/gnome/shell/extensions/gnome4synology/">
+    <key type="s" name="url">
+      <default>'discstation:5000'</default>
+      <summary>URL of Synology® NAS eg 'discstation:5000'</summary>
+      <description/>
+    </key>
+    <key type="s" name="user">
+      <default>'admin'</default>
+      <summary>User on Synology® NAS eg 'admin'</summary>
+      <description/>
+    </key>
+    <key type="s" name="password">
+      <default>'admin'</default>
+      <summary>Password on Synology® NAS eg 'admin'</summary>
+      <description/>
+    </key>
+  </schema>
+</schemalist>
