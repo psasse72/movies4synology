@@ -22,6 +22,7 @@ const Shell = imports.gi.Shell;
 const St = imports.gi.St;
 const Util = imports.misc.util;
 const Me = imports.misc.extensionUtils.getCurrentExtension();
+const ExtensionUtils = imports.misc.extensionUtils;
 const Soup = imports.gi.Soup;
 
 const SETTINGS_SCHEMA = 'org.gnome.shell.extensions.gnome4synology';
@@ -169,12 +170,12 @@ function onSettingsUpdate() {
 
 function getSettings(schema) {
   if (Gio.Settings.list_schemas().indexOf(schema) == -1)
-    throw _("Schema \"%s\" not found.").format(schema);
+    throw Error(_("Schema \"%s\" not found.").format(schema));
   return new Gio.Settings({ schema: schema });
 }
 
 function enable () {
-  _settings = getSettings(SETTINGS_SCHEMA);
+  _settings = ExtensionUtils.getSettings(SETTINGS_SCHEMA);
   _settings.connect('changed::' + GSETTINGS_URL_KEY, onSettingsUpdate);
   _settings.connect('changed::' + GSETTINGS_USER_KEY, onSettingsUpdate);
   _settings.connect('changed::' + GSETTINGS_PWD_KEY, onSettingsUpdate);
