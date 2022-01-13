@@ -1,8 +1,9 @@
 {
-  "name": "GNOME Movie Search provider for Synology®",
-  "description": "GNOME search provider for movie titles on Synology® NAS including offline search (yet to come)",
+  "name": "Movie Search provider for Synology\u00ae",
+  "description": "search provider for movie titles on Synology\u00ae NAS including offline search (yet to come)",
   "uuid": "gnome4synology@psasse.gmx.de",
   "shell-version": [
-    "3.36"
-  ]
+    "40"
+  ],
+  "url": "https://github.com/psasse72/movies4synology"
 }
