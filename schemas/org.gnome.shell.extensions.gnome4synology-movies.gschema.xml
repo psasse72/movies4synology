@@ -16,5 +16,25 @@
       <summary>Password on Synology® NAS eg 'admin'</summary>
       <description/>
     </key>
+    <key type="i" name="limit">
+      <default>5</default>
+      <summary>Limit the number of movies returned</summary>
+      <description/>
+    </key>
+    <key type="b" name="additional">
+      <default>false</default>
+      <summary>Are additional movie infos shown as search result (slower searches)?</summary>
+      <description/>
+    </key>
+    <key type="i" name="poster-size">
+      <default>16</default>
+      <summary>Poster size of movie result items</summary>
+      <description/>
+    </key>
+    <key type="b" name="debug">
+      <default>false</default>
+      <summary>Are debug messages shown as search result?</summary>
+      <description/>
+    </key>
   </schema>
 </schemalist>

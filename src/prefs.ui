@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface domain="my-gettext-domain">
+  <object class="GtkAdjustment" id="max-loc-chars-adj">
+      <property name="upper">20</property>
+      <property name="value">5</property>
+      <property name="step_increment">1</property>
+  </object>
+  <template class="PrefsWidget" parent="GtkBox">
+    <child>
+      <object class="GtkBox" id="content_area">
+        <property name="margin-start">5</property>
+        <property name="margin-end">5</property>
+        <property name="margin-top">5</property>
+        <property name="margin-bottom">5</property>        
+        <child>
+          <object class="GtkGrid" id="grid">
+            <property name="margin-start">12</property>
+            <property name="margin-end">12</property>
+            <property name="margin-top">12</property>
+            <property name="margin-bottom">12</property>
+            <property name="row-spacing">2</property>
+            <property name="column-spacing">6</property>
+            <child>
+              <object class="GtkLabel" id="fontlabel">
+                <property name="label" translatable="yes">URL of Synology® NAS eg 'discstation:5000'</property>
+                <property name="use-underline">1</property>
+                <property name="mnemonic-widget">url_entry</property>
+                <property name="xalign">1</property>
+                <layout>
+                  <property name="column">0</property>
+                  <property name="row">0</property>
+                </layout>
+              </object>
+            </child>
+             <child>
+               <object class="GtkEntry" id="url_entry">
+                 <property name="text" translatable="yes">discstation:5000</property>
+                 <layout>
+                   <property name="column">1</property>
+                   <property name="row">0</property>
+                 </layout>
+                 <signal name="changed" handler="_onURLChanged" swapped="no"/>
+               </object>
+             </child>
+             <child>
+               <object class="GtkLabel">
+                 <property name="label" translatable="yes">User on Synology® NAS eg 'admin'</property>
+                 <property name="margin-end">5</property>
+                 <property name="use-underline">1</property>
+                 <property name="mnemonic-widget">user_entry</property>
+                 <property name="xalign">1</property>
+                 <layout>
+                   <property name="column">0</property>
+                   <property name="row">1</property>
+                 </layout>
+               </object>
+             </child>
+             <child>
+               <object class="GtkEntry" id="user_entry">
+                 <property name="text" translatable="yes">admin</property>
+                 <signal name="changed" handler="_onUserChanged" swapped="no"/>
+                 <layout>
+                   <property name="column">1</property>
+                   <property name="row">1</property>
+                 </layout>
+               </object>
+             </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="label" translatable="yes">Password on Synology® NAS eg 'password'</property>
+                <property name="use-underline">1</property>
+                <property name="mnemonic-widget">password_entry</property>
+                <property name="xalign">1</property>
+                <layout>
+                  <property name="column">0</property>
+                  <property name="row">2</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkPasswordEntry" id="password_entry">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="show-peek-icon">1</property>
+                <property name="placeholder-text" translatable="yes">password</property>
+                <property name="text" translatable="yes">password</property>
+                <signal name="changed" handler="_onPasswordChanged" swapped="no"/>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="row">2</property>
+                </layout>
+              </object>
+            </child>
+            <child>        
+              <object class="GtkLabel">
+                <property name="label" translatable="yes">Limit the number of movies returned</property>
+                <property name="use-underline">1</property>
+                <property name="mnemonic-widget">limit_button</property>
+                <property name="xalign">1</property>
+                <layout>
+                  <property name="column">0</property>
+                  <property name="row">3</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkSpinButton" id="limit_button">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="adjustment">max-loc-chars-adj</property>
+                <signal name="changed" handler="_onLimitChanged" swapped="no"/>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="row">3</property>
+                </layout>
+              </object>
+            </child>
+            <child>        
+              <object class="GtkLabel">
+                <property name="label" translatable="yes">Show addional infos for movie result item</property>
+                <property name="use-underline">1</property>
+                <property name="mnemonic-widget">additional_button</property>
+                <property name="xalign">1</property>
+                <layout>
+                  <property name="column">0</property>
+                  <property name="row">4</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="additional_button">
+                <property name="active">false</property>
+                <signal name="toggled" handler="_onAdditionalChanged" swapped="no"/>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="row">4</property>
+                </layout>
+              </object>
+            </child>
+            <child>        
+              <object class="GtkLabel" id="poster_size_label">
+                <property name="label" translatable="yes">Poster size of movie result item</property>
+                <property name="use-underline">1</property>
+                <property name="mnemonic-widget">poster_size_combo</property>
+                <property name="xalign">1</property>
+                <layout>
+                  <property name="column">0</property>
+                  <property name="row">5</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkComboBoxText" id="poster_size_combo">
+                <property name="active">2</property>
+                <signal name="changed" handler="_onPosterSizeChanged" swapped="no"/>
+                <items>
+                  <item>16</item>
+                  <item>32</item>
+                  <item>64</item>
+                  <item>128</item>
+                  <item>256</item>
+                </items>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="row">5</property>
+                </layout>
+              </object>
+            </child>
+            <child>        
+              <object class="GtkLabel">
+                <property name="label" translatable="yes">Put error messages as search result</property>
+                <property name="use-underline">1</property>
+                <property name="mnemonic-widget">debug_button</property>
+                <property name="xalign">1</property>
+                <layout>
+                  <property name="column">0</property>
+                  <property name="row">6</property>
+                </layout>
+              </object>
+            </child>
+            <child>
+              <object class="GtkCheckButton" id="debug_button">
+                <property name="active">false</property>
+                <signal name="toggled" handler="_onDebugChanged" swapped="no"/>
+                <layout>
+                  <property name="column">1</property>
+                  <property name="row">6</property>
+                </layout>
+              </object>
+            </child>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
+
