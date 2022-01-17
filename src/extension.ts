@@ -153,10 +153,10 @@ const ddgProvider: SearchProvider = {
     let url = this.settings.get_value(GSETTINGS_URL_KEY).deep_unpack();
     let user = this.settings.get_value(GSETTINGS_USER_KEY).deep_unpack();
     let password = this.settings.get_value(GSETTINGS_PASSWORD_KEY).deep_unpack();    
-    // global.log(`${Me.metadata.name}: Playing movie '${selection.title}' for query '${selection.query}'...`);
     const token = await getLoginToken(url, user, password);
     const tidAnswer = await getTid(url, token.data.sid);
-    const fileId = (selection.fileId === undefined)?(await getFileIds(url, token.data.sid, [selection.id])).data.movie[0].id:selection.fileId;
+    const fileId = (selection.fileId === undefined)?(await getFileIds(url, token.data.sid, [selection.id])).data.movie[0].additional.file[0].id:selection.fileId;
+    // global.log(`${Me.metadata.name}: Playing movie '${selection.title}' for query '${selection.query}' and id '${fileId}'...`);
     const streamId = await getStreamId(url, token.data.sid, fileId);
     const synoToken = await getSynoToken(url, user, password);
     url = `http://${url}/webapi/entry.cgi/1.mp4?format=raw&api=SYNO.VideoStation2.Streaming&method=stream&version=2&stream_id=%22${streamId.data.stream_id}%22&tid=${tidAnswer.data.tid}&SynoToken=${synoToken.SynoToken}`;
